@@ -1,43 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowRight, FileText, Terminal, Sparkles, CheckCircle2 } from 'lucide-react';
 import { personalDetails } from '../data/portfolioData';
 
 export default function HeroSection({ openResumeModal }) {
-  // Typing animation state
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const roles = (personalDetails?.heroTypingRoles || ["AI & Data Science Engineer"]).map(role => role === "AI & Data Science Engineer" ? "AI & Data Science" : role);
-    if (!roles || roles.length === 0) return;
-    const safeIndex = roleIndex % roles.length;
-    const fullText = roles[safeIndex] || "";
-    let typingSpeed = isDeleting ? 40 : 80;
-
-    if (!isDeleting && currentText === fullText) {
-      typingSpeed = 2000; // Pause at end
-      const timeout = setTimeout(() => setIsDeleting(true), typingSpeed);
-      return () => clearTimeout(timeout);
-    } else if (isDeleting && currentText === '') {
-      setIsDeleting(false);
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-      typingSpeed = 400;
-    }
-
-    const timeout = setTimeout(() => {
-      if (fullText) {
-        setCurrentText(
-          isDeleting
-            ? fullText.substring(0, Math.max(0, currentText.length - 1))
-            : fullText.substring(0, Math.min(fullText.length, currentText.length + 1))
-        );
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, roleIndex]);
 
   return (
     <section id="hero" className="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden">
@@ -68,8 +34,7 @@ export default function HeroSection({ openResumeModal }) {
 
           <div className="h-12 sm:h-14 mb-6 flex items-center">
             <h2 className="text-xl sm:text-3xl font-mono font-semibold text-slate-700 dark:text-slate-300">
-              Exploring the world of <span className="text-purple-600 dark:text-purple-400 border-b-2 border-purple-500">{currentText}</span>
-              <span className="animate-pulse text-cyan-500 dark:text-cyan-400">|</span>
+              Exploring the world of Data Science
             </h2>
           </div>
 
