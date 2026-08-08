@@ -10,7 +10,7 @@ export default function HeroSection({ openResumeModal }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const roles = personalDetails?.heroTypingRoles || ["AI & Data Science Engineer"];
+    const roles = (personalDetails?.heroTypingRoles || ["AI & Data Science Engineer"]).map(role => role === "AI & Data Science Engineer" ? "AI & Data Science" : role);
     if (!roles || roles.length === 0) return;
     const safeIndex = roleIndex % roles.length;
     const fullText = roles[safeIndex] || "";
@@ -68,7 +68,7 @@ export default function HeroSection({ openResumeModal }) {
 
           <div className="h-12 sm:h-14 mb-6 flex items-center">
             <h2 className="text-xl sm:text-3xl font-mono font-semibold text-slate-700 dark:text-slate-300">
-              I build <span className="text-purple-600 dark:text-purple-400 border-b-2 border-purple-500">{currentText}</span>
+              Exploring the world of <span className="text-purple-600 dark:text-purple-400 border-b-2 border-purple-500">{currentText}</span>
               <span className="animate-pulse text-cyan-500 dark:text-cyan-400">|</span>
             </h2>
           </div>
