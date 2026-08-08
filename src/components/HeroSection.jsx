@@ -33,7 +33,7 @@ export default function HeroSection({ openResumeModal }) {
           </h1>
 
           <div className="h-12 sm:h-14 mb-6 flex items-center">
-            <h2 className="text-xl sm:text-3xl font-mono font-semibold text-slate-700 dark:text-slate-300">
+            <h2 className="text-xl sm:text-3xl font-mono font-semibold text-slate-700 dark:text-slate-300 lg:whitespace-nowrap">
               Exploring the world of Data Science
             </h2>
           </div>
