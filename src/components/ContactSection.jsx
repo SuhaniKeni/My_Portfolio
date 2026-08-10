@@ -58,20 +58,18 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left Column: Direct Info */}
+        {/* Centered Direct Contact Information Card */}
+        <div className="max-w-2xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 space-y-6"
           >
-            <div className="glass-panel p-8 rounded-3xl border border-slate-200/80 dark:border-white/10 space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Contact Information</h3>
-              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                Feel free to reach out directly via email, phone, or LinkedIn. I am always open to discussing new software development, AI, and research opportunities.
+            <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-white/10 space-y-6 shadow-2xl glass-glow-cyan">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white text-center">Contact Information</h3>
+              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed text-center">
+                Feel free to reach out directly via email, phone, or LinkedIn. I am always open to discussing new software development, AI, and research opportunities!
               </p>
 
               <div className="space-y-4 pt-2">
@@ -131,9 +129,9 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Social Connect */}
-              <div className="pt-4 border-t border-slate-200 dark:border-white/10">
-                <span className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-3">Social Channels</span>
+              {/* Social Connect & Direct Mail Button */}
+              <div className="pt-4 border-t border-slate-200 dark:border-white/10 space-y-4">
+                <span className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider block text-center">Connect & Collaborate</span>
                 <div className="flex gap-3">
                   <a
                     href={personalDetails.linkedin}
@@ -154,100 +152,17 @@ export default function ContactSection() {
                     <span>GitHub</span>
                   </a>
                 </div>
+
+                <a
+                  href={`mailto:${personalDetails.email}`}
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold text-xs font-mono shadow-neon-cyan hover:opacity-95 active:scale-98 transition-all flex items-center justify-center gap-2"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>Send Direct Email ({personalDetails.email})</span>
+                </a>
               </div>
             </div>
           </motion.div>
-
-          {/* Right Column: Interactive Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7"
-          >
-            <div className="glass-panel p-8 rounded-3xl border border-slate-200/80 dark:border-white/10 relative overflow-hidden">
-              
-              {submitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="py-12 text-center space-y-4"
-                >
-                  <div className="w-16 h-16 rounded-full bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500 dark:border-cyan-400 flex items-center justify-center mx-auto shadow-neon-cyan">
-                    <Sparkles className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Message Transmitted!</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm max-w-md mx-auto">
-                    Thank you, <strong className="text-cyan-700 dark:text-cyan-300">{formData.name}</strong>. Your message has been received. Suhani will get back to you shortly at <strong className="text-cyan-700 dark:text-cyan-300">{formData.email}</strong>.
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Send Me a Message</h3>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-mono text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-2">Your Name *</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl glass-panel border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-mono text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-2">Your Email *</label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl glass-panel border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-2">Subject</label>
-                    <input
-                      type="text"
-                      placeholder="Project Collaboration / Opportunity"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl glass-panel border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-2">Message *</label>
-                    <textarea
-                      required
-                      rows={5}
-                      placeholder="Write your message here..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl glass-panel border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold text-sm shadow-neon-cyan hover:opacity-95 active:scale-98 transition-all flex items-center justify-center gap-2"
-                  >
-                    <Send className="w-4 h-4" />
-                    <span>Send Transmission</span>
-                  </button>
-                </form>
-              )}
-
-            </div>
-          </motion.div>
-
         </div>
 
       </div>

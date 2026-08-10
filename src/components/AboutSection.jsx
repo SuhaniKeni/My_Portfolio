@@ -106,7 +106,7 @@ export default function AboutSection() {
                 {[
                   "Deep Learning (CNN/LSTM)",
                   "Genomic Data Pipelines",
-                  "Python & Java OOP",
+                  "Python & SQL Architecture",
                   "React & Tailwind CSS",
                   "SQL & RDBMS Schemas",
                   "UI/UX Design",

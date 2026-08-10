@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Printer, Download, Mail, Phone, MapPin, Linkedin, Github, ExternalLink, GraduationCap, Code, Award, CheckCircle2 } from 'lucide-react';
 import { personalDetails, educationData, technicalSkills, projectsData, certificationsData, activitiesData, languagesData } from '../data/portfolioData';
 
 export default function ResumeModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
-  const handlePrint = () => {
-    window.print();
-  };
+  if (!isOpen) return null;
 
   return (
     <AnimatePresence>
@@ -27,13 +34,14 @@ export default function ResumeModal({ isOpen, onClose }) {
             </div>
 
             <div className="flex items-center gap-3">
-              <button
-                onClick={handlePrint}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-700 dark:text-cyan-400 border border-cyan-500/30 text-xs font-mono font-semibold transition-colors"
+              <a
+                href="/Suhani_Keni_Resume.pdf"
+                download="Suhani_Keni_Resume.pdf"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-mono text-xs font-semibold shadow-neon-cyan transition-all cursor-pointer hover:scale-[1.02] active:scale-95"
               >
-                <Printer className="w-4 h-4" />
-                <span>Print / Download PDF</span>
-              </button>
+                <Download className="w-4 h-4" />
+                <span>Download PDF</span>
+              </a>
 
               <button
                 onClick={onClose}
@@ -123,7 +131,7 @@ export default function ResumeModal({ isOpen, onClose }) {
                 TECHNICAL SKILLS
               </h2>
               <div className="space-y-2 text-xs text-slate-700 dark:text-slate-200 font-mono">
-                <div><strong className="text-slate-900 dark:text-white font-semibold">Programming:</strong> Python, Java</div>
+                <div><strong className="text-slate-900 dark:text-white font-semibold">Programming:</strong> Python, SQL, JavaScript</div>
                 <div><strong className="text-slate-900 dark:text-white font-semibold">AI & ML:</strong> Machine Learning, Deep Learning, CNN, LSTM, Data Analytics</div>
                 <div><strong className="text-slate-900 dark:text-white font-semibold">Web & Frontend:</strong> React, Tailwind CSS, Firebase Auth, Frontend Dev</div>
                 <div><strong className="text-slate-900 dark:text-white font-semibold">Databases:</strong> SQL, SQLite, DBMS, RDBMS, NoSQL</div>

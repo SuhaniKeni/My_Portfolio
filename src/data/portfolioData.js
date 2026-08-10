@@ -17,8 +17,8 @@ export const personalDetails = {
   ],
   stats: [
     { label: "CGPA (VTU)", value: "8.85", suffix: "/ 10" },
-    { label: "Core Projects", value: "3+", suffix: "Built" },
-    { label: "Certifications", value: "4", suffix: "Earned" },
+    { label: "Core Projects", value: "4+", suffix: "Built" },
+    { label: "Certifications", value: "5", suffix: "Earned" },
     { label: "High Distinction", value: "93%", suffix: "Scored" }
   ]
 };
@@ -29,8 +29,9 @@ export const technicalSkills = [
     icon: "Code",
     color: "cyan",
     skills: [
-      { name: "Python", level: 90, highlight: "Primary Language for AI & ML" },
-      { name: "Java", level: 80, highlight: "OOP & Data Structures" }
+      { name: "Python", level: 92, highlight: "Primary Language for AI, ML & Backend" },
+      { name: "SQL", level: 90, highlight: "Database Queries & Data Architecture" },
+      { name: "JavaScript (ES6+)", level: 88, highlight: "Frontend Logic & Web Development" }
     ]
   },
   {
@@ -41,8 +42,8 @@ export const technicalSkills = [
       { name: "Machine Learning", level: 88 },
       { name: "Deep Learning", level: 85 },
       { name: "CNN & LSTM Models", level: 88, highlight: "Genomic sequence classification" },
-      { name: "Data Analytics", level: 85 },
-      { name: "Model Training & Preprocessing", level: 90 }
+      { name: "AI Risk & Analytics Insights", level: 86, highlight: "Operational risk telemetry" },
+      { name: "Model Preprocessing", level: 90 }
     ]
   },
   {
@@ -50,37 +51,82 @@ export const technicalSkills = [
     icon: "Layout",
     color: "blue",
     skills: [
-      { name: "React", level: 88 },
+      { name: "React", level: 90 },
+      { name: "Recharts", level: 88, highlight: "Real-time data visualizations" },
       { name: "Tailwind CSS", level: 92 },
       { name: "Firebase Authentication", level: 80 },
-      { name: "Frontend Architecture & UI/UX", level: 90 }
+      { name: "UI/UX & Responsive Design", level: 90 }
     ]
   },
   {
-    category: "Databases & Storage",
+    category: "Backend & Databases",
     icon: "Database",
     color: "emerald",
     skills: [
-      { name: "SQL & RDBMS", level: 88 },
-      { name: "SQLite", level: 85 },
-      { name: "DBMS Fundamentals", level: 90 },
+      { name: "FastAPI & REST APIs", level: 88, highlight: "Enterprise API architecture" },
+      { name: "SQL & SQLite", level: 88, highlight: "RDBMS asset registries" },
+      { name: "Flask", level: 82 },
       { name: "NoSQL", level: 75 }
     ]
   },
   {
-    category: "Tools & Frameworks",
+    category: "Cloud, DevOps & Tools",
     icon: "Wrench",
     color: "pink",
     skills: [
+      { name: "Docker & Containerization", level: 85, highlight: "Full-stack deployment" },
+      { name: "AWS EC2 & Nginx", level: 85, highlight: "Production hosting" },
       { name: "Git & GitHub", level: 88 },
-      { name: "FastAPI & Flask", level: 82 },
-      { name: "Gemini API", level: 85 },
-      { name: "Power BI", level: 80 }
+      { name: "Power BI & Analytics", level: 80 }
     ]
   }
 ];
 
 export const projectsData = [
+  {
+    id: "assetguard",
+    title: "AssetGuard — Enterprise Asset Management & AI-Powered Predictive Maintenance",
+    shortTitle: "AssetGuard",
+    subtitle: "Enterprise Asset Management & AI-Powered Predictive Maintenance",
+    status: "Completed",
+    category: "AI & ML",
+    categoryLabel: "AI • Full Stack • Cloud • Enterprise Software",
+    badge: "Full-Stack Enterprise",
+    deploymentBadge: "🚀 Deployed on AWS EC2",
+    description: "A full-stack enterprise asset management platform for equipment tracking, maintenance operations, work orders, scheduling, analytics, and AI-assisted operational risk insights.",
+    image: "/assetguard-dashboard.png",
+    details: [
+      "Built a full-stack enterprise asset management platform for centralizing equipment tracking, department classification, maintenance scheduling, and work order tracking.",
+      "Engineered high-performance REST APIs in Python using FastAPI backed by SQLite for robust data persistence.",
+      "Built interactive operational analytics dashboards with React and Recharts to visualize maintenance metrics and expenditure tracking.",
+      "Integrated AI-assisted risk and operational insights to evaluate equipment telemetry and predictive maintenance indicators.",
+      "Containerized backend and frontend services using Docker and Nginx and deployed full stack on AWS EC2."
+    ],
+    highlights: [
+      "Enterprise Asset Registry for managing equipment and assets",
+      "Asset classification and department management",
+      "Maintenance Management Hub & Work order creation and tracking",
+      "Maintenance scheduling and calendar analytics",
+      "Maintenance analytics and expenditure tracking",
+      "AI-assisted risk and operational insights",
+      "Enterprise executive dashboard with data visualizations",
+      "Role-based access and authentication with secure REST APIs"
+    ],
+    technologies: [
+      "React",
+      "FastAPI",
+      "Python",
+      "SQLite",
+      "Docker",
+      "Nginx",
+      "AWS EC2",
+      "Recharts",
+      "REST APIs"
+    ],
+    featured: true,
+    github: "https://github.com/SuhaniKeni/AssetGuard-AI",
+    demo: "http://13.235.97.154/dashboard"
+  },
   {
     id: "genome-ai",
     title: "GenomeAI - AI-Based DNA Disease Prediction System",
@@ -173,18 +219,27 @@ export const educationData = [
 
 export const certificationsData = [
   {
+    title: "AI for App Building",
+    issuer: "Google (via Coursera)",
+    icon: "Sparkles",
+    type: "AI & App Dev",
+    color: "cyan",
+    date: "Aug 2026",
+    verifyUrl: "https://coursera.org/verify/FUMSSOR55N85"
+  },
+  {
     title: "Getting Started with Artificial Intelligence",
     issuer: "IBM SkillsBuild",
     icon: "Brain",
     type: "AI & ML",
-    color: "cyan"
+    color: "purple"
   },
   {
     title: "What is Data Science?",
     issuer: "IBM",
     icon: "BarChart",
     type: "Data Science",
-    color: "purple"
+    color: "blue"
   },
   {
     title: "Full Stack Python",
@@ -198,7 +253,7 @@ export const certificationsData = [
     issuer: "Spidervella Technologies",
     icon: "Code",
     type: "Programming",
-    color: "blue"
+    color: "pink"
   }
 ];
 

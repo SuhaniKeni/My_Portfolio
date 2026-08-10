@@ -1,15 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Brain, BarChart, Layers, Code, CheckCircle2 } from 'lucide-react';
+import { Award, Brain, BarChart, Layers, Code, CheckCircle2, Sparkles, ExternalLink } from 'lucide-react';
 import { certificationsData } from '../data/portfolioData';
 
 export default function CertificationsSection() {
   const getIcon = (iconName) => {
     switch (iconName) {
-      case 'Brain': return <Brain className="w-6 h-6 text-cyan-400" />;
-      case 'BarChart': return <BarChart className="w-6 h-6 text-purple-400" />;
+      case 'Sparkles': return <Sparkles className="w-6 h-6 text-cyan-400" />;
+      case 'Brain': return <Brain className="w-6 h-6 text-purple-400" />;
+      case 'BarChart': return <BarChart className="w-6 h-6 text-blue-400" />;
       case 'Layers': return <Layers className="w-6 h-6 text-emerald-400" />;
-      case 'Code': return <Code className="w-6 h-6 text-blue-400" />;
+      case 'Code': return <Code className="w-6 h-6 text-pink-400" />;
       default: return <Award className="w-6 h-6 text-cyan-400" />;
     }
   };
@@ -28,12 +29,12 @@ export default function CertificationsSection() {
             Certifications & <span className="text-gradient-cyan">Badges</span>
           </h2>
           <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
-            Professional certifications earned from industry leaders IBM and Spidervella Technologies.
+            Professional certifications earned from industry leaders Google, IBM, and Spidervella Technologies.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certificationsData.map((cert, idx) => (
             <motion.div
               key={idx}
@@ -41,7 +42,7 @@ export default function CertificationsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="glass-panel p-6 rounded-3xl border border-slate-200/80 dark:border-white/10 hover:border-cyan-500/40 hover:scale-[1.03] transition-all flex flex-col justify-between group"
+              className="glass-panel p-6 rounded-3xl border border-slate-200/80 dark:border-white/10 hover:border-cyan-500/40 hover:scale-[1.02] transition-all flex flex-col justify-between group"
             >
               <div>
                 {/* Header Icon & Tag */}
@@ -59,17 +60,31 @@ export default function CertificationsSection() {
                   {cert.title}
                 </h3>
 
-                {/* Issuer */}
+                {/* Issuer & Date */}
                 <p className="text-slate-600 dark:text-slate-300 text-xs font-mono font-medium mb-4">
                   Issuer: <span className="text-cyan-700 dark:text-cyan-400 font-semibold">{cert.issuer}</span>
+                  {cert.date && <span className="text-slate-400 dark:text-slate-500 block text-[11px] mt-0.5">Issued: {cert.date}</span>}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-mono text-[11px] font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  Verified Credential
-                </span>
+                {cert.verifyUrl ? (
+                  <a
+                    href={cert.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 font-mono text-[11px] font-semibold transition-colors"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                    <span>Verify Credential</span>
+                    <ExternalLink className="w-3 h-3 ml-0.5 shrink-0" />
+                  </a>
+                ) : (
+                  <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-mono text-[11px] font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    Verified Credential
+                  </span>
+                )}
               </div>
             </motion.div>
           ))}

@@ -93,61 +93,36 @@ export default function HeroSection({ openResumeModal }) {
           </div>
         </motion.div>
 
-        {/* Right Column: Futuristic Terminal Mockup */}
+        {/* Right Column: Circular Portrait Showcase */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-5"
+          className="lg:col-span-5 flex justify-center items-center py-4"
         >
-          <div className="relative rounded-2xl glass-panel border border-slate-300/80 dark:border-white/15 shadow-2xl overflow-hidden glass-glow-cyan">
-            {/* Terminal Window Header */}
-            <div className="px-4 py-3 bg-[#0d121f] border-b border-white/10 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block" />
+          <div className="relative group flex flex-col items-center">
+            
+            {/* Background Ambient Glowing Blur Ring */}
+            <div className="absolute -inset-3 bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-60 group-hover:opacity-90 transition duration-500 animate-pulse-glow pointer-events-none" />
+
+            {/* Circular Photo Frame */}
+            <div className="relative p-1.5 rounded-full bg-gradient-to-tr from-cyan-400 via-purple-500 to-pink-500 shadow-2xl glass-glow-cyan">
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[350px] lg:h-[350px] rounded-full overflow-hidden border-4 border-slate-900/90 bg-slate-900 shadow-inner">
+                <img
+                  src="/suhani-keni.jpg"
+                  alt="Suhani Keni"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
-              <div className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
-                <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                <span>genome_ai_pipeline.py</span>
-              </div>
-              <span className="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded">v2.4</span>
             </div>
 
-            {/* Code Content */}
-            <div className="p-5 font-mono text-xs sm:text-sm text-slate-200 leading-relaxed overflow-x-auto space-y-3 bg-[#0a0d14]/95">
-              <div className="text-slate-500"># Suhani Keni - GenomeAI Model Training</div>
-              <div>
-                <span className="text-purple-400">import</span> torch<br />
-                <span className="text-purple-400">from</span> models <span className="text-purple-400">import</span> GenomicCNN_LSTM<br />
-                <span className="text-purple-400">from</span> datasets <span className="text-purple-400">import</span> ClinVarDataset
-              </div>
-
-              <div className="pt-1 text-cyan-300">
-                <span className="text-slate-500"># Initialize pipeline & tokenizer</span><br />
-                dataset = ClinVarDataset(<span className="text-emerald-400">"ncbi_genomic_v2"</span>)<br />
-                model = GenomicCNN_LSTM(layers=[<span className="text-amber-300">256, 128, 64</span>])
-              </div>
-
-              <div className="p-3 rounded-lg bg-cyan-950/40 border border-cyan-500/20 text-xs">
-                <div className="text-cyan-400 font-semibold mb-1 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Pipeline Execution Output:</span>
-                </div>
-                <div className="text-slate-300 pl-5 space-y-0.5">
-                  <div>[STATUS] Sequence tokenization: Complete (100k samples)</div>
-                  <div>[STATUS] CNN Feature Extraction: Done</div>
-                  <div>[STATUS] LSTM Mutation Mapping: Done</div>
-                  <div className="text-emerald-400 font-bold pt-1">[METRIC] Validation Accuracy: 98.65%</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 pt-1 text-slate-400">
-                <span className="text-cyan-400 font-bold">$</span>
-                <span className="animate-pulse">python evaluate_xai.py --model GenomeAI</span>
-              </div>
+            {/* Status Pill Badge Centered Under Avatar */}
+            <div className="mt-4 px-4 py-2 rounded-full glass-panel border border-cyan-500/40 backdrop-blur-md bg-slate-950/95 text-white shadow-xl flex flex-wrap items-center justify-center gap-2 text-xs font-mono shadow-neon-cyan text-center z-10">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+              <span className="font-semibold text-slate-100">AI & Data Science Student</span>
+              <span className="text-cyan-400 font-bold">• 8.85 CGPA</span>
             </div>
+
           </div>
         </motion.div>
 
